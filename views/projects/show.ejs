@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
+    </head>
+<body>
+    
+        <!-- <div class="navbar">
+            <div class="heading">Final Year Major Project Database</div>
+            <% if(!currentUser){%>
+            <% }else{%>
+             <div class="signedInfo"> Signed In as: <%= currentUser.username%> </div>
+            <%}%>
+        </div> -->
+        <%- include('../partials/header'); -%> 
+          <div class="container">
+            <article class="project"> 
+            <header>
+                <div><h2><%= project.title %></h2></div>
+                <div class="grid">
+                
+                  <% if(currentUser  && project.author.username.filter(e => (e == (currentUser.username))).length > 0 ){%>
+
+                      <a href="/projects/<%= project._id %>/edit" ><Button>Edit</Button></a> 
+                      <form action="/projects/<%= project._id %>?_method=DELETE" method="post">
+                          <Button class="deleteButton">Delete</Button>
+                                                   
+                      </form>
+                      <div></div>
+                    <% } %>
+                        <div class="status">
+                          <% if(project.reviewStatus){%>
+                          <h4>Approved</h4>
+                          <% }else{ %>
+                          <h4>Pending</h4>
+                          <%}%>
+                        </div>
+                    </div>
+            </header>
+            
+            <div>
+              <strong>Authors: </strong><% for(var i =0; i< project.author.user.length;i++){ %>
+               <% if(project.author.user[i]!=""){%>
+                <li><%=project.author.user[i]%></li> 
+              <%} %>  
+            <% } %> 
+            </div>
+          </br>
+            <div><strong>Supervisor: </strong><%= project.supervisor %></div>
+            <div><strong>Year: </strong><%= project.year %></div>
+            <div><strong>Link:</strong> <a href=<%- project.link -%> ><%= project.link%></div></a>
+            <div><strong>Abstract: </strong>
+                <div>
+                  <%= project.abstract %>
+                </div>
+            </div>  
+            </article>
+          </div>
+        
+</body>
+</html> <br/><br/>
+

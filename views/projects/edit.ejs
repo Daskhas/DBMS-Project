@@ -1,0 +1,38 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+    <head><link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" /></head>
+    <body>
+         <%- include('../partials/header'); -%> 
+        <div class="container">
+        <form action="/projects/<%=project._id%>?_method=PUT" method="post">
+            <h1 class="heading">Editing a Project</h1>
+            <div class="formcontainer">
+                <hr/>
+                
+                    <input class="boxSize" type="text" name="project[title]" value="<%=project.title%>"  placeholder=" Title" required>
+                    
+                    <input  type="text" name="project[author][username][0]" value="<%=project.author.username[0]%>" placeholder="Member RollNo" >
+                    <input  type="text" name="project[author][username][1]" value="<%=project.author.username[1]%>" placeholder="Member RollNo" >
+                    <input  type="text" name="project[author][username][2]" value="<%=project.author.username[2]%>" placeholder="Member RollNo" >
+                    <input  type="text" name="project[author][username][3]" value="<%=project.author.username[3]%>" placeholder="Member RollNo" >
+
+                    <input class="boxSize" type="text" name="project[supervisor]" value="<%=project.supervisor%>"  placeholder=" Supervisor"required>
+                    <input class="boxSize" type="number" name="project[year]"value="<%=project.year%>"  placeholder=" Year" min="1900" max ="2030" required>
+                    <input class="boxSize" type="text" name="project[link]" value="<%=project.link%>"  placeholder=" Link" required>
+                    <input class="boxSize" type="text" name="project[abstract]" value="<%=project.abstract%>"  placeholder=" Abstract" required>
+                    <button class="formbutton"> Update</button>
+              
+            </div>
+      </form>
+      <div class="cancel">
+        <a href="/projects/<%=project._id%>" ><Button>Cancel</Button></a>   
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+      <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
+      <%- include('../partials/header'); -%> 
+    </head>
+    <body>
+        <div class="container">
+        <form action="/projects" method="post">
+            <h1 class="heading">Adding a Project</h1>
+            <div class="formcontainer">
+                <hr/>
+                
+                    <input class="boxSize" type="text" name="title" placeholder="Title" required>
+                    
+                    <input  type="text" name="member[]" placeholder="Member RollNo">
+                    <input  type="text" name="member[]" placeholder="Member RollNo">
+                    <input  type="text" name="member[]" placeholder="Member RollNo">
+                    <input  type="text" name="member[]" placeholder="Member RollNo">
+                    
+                    <input type="text" name="supervisor"  placeholder="Supervisor"required>
+                    <input type="number" name="year" placeholder=" Year" min="1900" max ="2030" required>
+                    <input type="text" name="link"  placeholder="Link" required>
+                    <input type="text" name="abstract" placeholder="Abstract" required>
+                    <button class="formbutton"> Submit</button>
+                </div>
+              </form>
+              <div class="cancel">
+                <a href="/projects""><button >Cancel</button></a>   
+              </div>
+        </div>
+    </body>
+    </html>
+
